@@ -24,6 +24,12 @@ api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
 index_name = 'dbpaseg'
 
+
+os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
+
+
+
+
 # Create a function to load Sentence-Transformers embeddings model with caching
 @st.cache(allow_output_mutation=True)
 def load_embeddings_model():
