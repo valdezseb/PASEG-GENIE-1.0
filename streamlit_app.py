@@ -35,7 +35,7 @@ pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
 index_name = 'dbpaseg'
 
 # Function to load embeddings and Pinecone client with RetrievalQA inside
-@st.cache_data  # Allow output mutation for the Pinecone client
+@st.cache_resource  # Allow output mutation for the Pinecone client
 def load_embeddings_and_pinecone():
     embeddings = HuggingFaceEmbeddings()
     docsearch = Pinecone.from_existing_index(index_name, embeddings)
