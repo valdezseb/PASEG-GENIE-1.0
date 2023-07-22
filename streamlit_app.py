@@ -34,20 +34,18 @@ api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
 index_name = 'dbpaseg'
 
-# Create a function to load embeddings and Pinecone client
+# Function to load embeddings and Pinecone client with RetrievalQA inside
 @st.cache(allow_output_mutation=True)  # Allow output mutation for the Pinecone client
 def load_embeddings_and_pinecone():
     embeddings = HuggingFaceEmbeddings()
     docsearch = Pinecone.from_existing_index(index_name, embeddings)
-    return docsearch
+    chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
+    qachain = load_qa_chain(chat, chain_type='stuff')
+    qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriever())
+    return qa
 
-# Create the Chat and RetrievalQA objects outside the Streamlit app function
-chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
-qachain = load_qa_chain(chat, chain_type='stuff')
-qa = RetrievalQA(combine_documents_chain=qachain)
-
-# Load the Pinecone client using st.cache
-docsearch = load_embeddings_and_pinecone()
+# Create the RetrievalQA object
+qa = load_embeddings_and_pinecone()
 
 condition1 = '\n [organize information: organize text so its easy to read, and bullet points when needed.] \n [tone and voice style: clear sentences, avoid use of complex sentences]'
 
@@ -72,8 +70,7 @@ if query := st.chat_input("Enter your query:"):
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         full_response = ""
-        for response in chat.send_message(query, docsearch.as_retriever()):
+        for response in qa.run(query + '\n' + condition1):
             full_response += response + "\n"
             st.markdown(full_response + "▌")
     st.session_state.messages.append({"role": "assistant", "content": full_response})
-
