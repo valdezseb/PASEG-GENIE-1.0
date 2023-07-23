@@ -52,18 +52,18 @@ condition1 = '\n [organize information: organize text so its easy to read, and b
 st.title("PASEG Genie // Donate a Coffee :coffee:")
 
 # Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+#if "messages" not in st.session_state:
+#    st.session_state.messages = []
 
 # Display chat messages from history on app rerun
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+#for message in st.session_state.messages:
+#    with st.chat_message(message["role"]):
+#        st.markdown(message["content"])
 
 # Accept user input
 if query := st.chat_input("Enter your query:"):
     # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": query})
+   # st.session_state.messages.append({"role": "user", "content": query})
     # Display user message in chat message container
     with st.chat_message("user"):
         st.markdown(query)
@@ -73,4 +73,4 @@ if query := st.chat_input("Enter your query:"):
         for response in qa.run(query + '\n' + condition1):
             full_response += response 
             st.markdown(full_response + "▌")
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+   # st.session_state.messages.append({"role": "assistant", "content": full_response})
