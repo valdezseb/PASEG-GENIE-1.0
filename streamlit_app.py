@@ -71,6 +71,6 @@ if query := st.chat_input("Enter your query:"):
     with st.chat_message("assistant"):
         full_response = ""
         for response in qa.run(query + '\n' + condition1):
-            full_response += response 
+            full_response = response 
             st.markdown(full_response + "▌")
    # st.session_state.messages.append({"role": "assistant", "content": full_response})
