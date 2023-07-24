@@ -38,7 +38,7 @@ pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
 index_name = 'db-paseg'
 
 # Define Streamlit app
-st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:", layout="wide")
+#st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:", layout="wide")
 
 # Define username and password
 username = "ppca"
