@@ -22,10 +22,11 @@ st.set_page_config(page_title="PASEG Genie", page_icon=":coffee:", layout="cente
 # Load Pinecone API key
 api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
-index_name = 'dbpaseg'
+#index_name = 'dbpaseg'
 
 
-os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
+#os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
+
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 #st.set_page_config(page_title="PASEG Genie", page_icon=":coffee:")
 
@@ -48,7 +49,7 @@ password = "65326"
 st.sidebar.title("Login")
 login_username = st.sidebar.text_input("Username")
 login_password = st.sidebar.text_input("Password", type="password")
-
+os.environ['OPENAI_API_KEY'] = st.sidebar.text_input("Enter your Open AI API Key")
 # Define Streamlit main page
 st.title("PASEG Genie // for education purpose :coffee:")
 st.markdown("*Chat With The Planning and Schedule Excellence Guide ver. 5.0*", unsafe_allow_html=True)
@@ -63,7 +64,7 @@ def check_login(username, password):
 
 # Check login credentials and show query input if login is successful
 if check_login(login_username, login_password):
-    st.write("Login successful!")
+    st.success("Login successful!")
     query = st.text_input("Enter your query:")
     if query:
         # Load embeddings and Pinecone client
