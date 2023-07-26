@@ -49,7 +49,9 @@ password = "65326"
 st.sidebar.title("Login")
 login_username = st.sidebar.text_input("Username")
 login_password = st.sidebar.text_input("Password", type="password")
+
 os.environ['OPENAI_API_KEY'] = st.sidebar.text_input("Enter your Open AI API Key")
+
 # Define Streamlit main page
 st.title("PASEG Genie // for education purpose :coffee:")
 st.markdown("*Chat With The Planning and Schedule Excellence Guide ver. 5.0*", unsafe_allow_html=True)
