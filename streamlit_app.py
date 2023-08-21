@@ -24,15 +24,15 @@ api_key = st.secrets["pinecone_api_key"]
 pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
 #index_name = 'dbpaseg'
 
-
-#os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
+##WHEN AVAILABLE
+os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 #st.set_page_config(page_title="PASEG Genie", page_icon=":coffee:")
 
 # Load Pinecone API key
-api_key = st.secrets["pinecone_api_key"]
-pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
+#api_key = st.secrets["pinecone_api_key"]
+#pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
 #index_name = 'db-paseg'
 
 # Define Pinecone index name
