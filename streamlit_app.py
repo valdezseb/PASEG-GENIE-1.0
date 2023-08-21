@@ -50,11 +50,12 @@ st.sidebar.title("Login")
 login_username = st.sidebar.text_input("Username")
 login_password = st.sidebar.text_input("Password", type="password")
 
-os.environ['OPENAI_API_KEY'] = st.sidebar.text_input("Enter your Open AI API Key")
+#os.environ['OPENAI_API_KEY'] = st.sidebar.text_input("Enter your Open AI API Key")
 
 # Define Streamlit main page
-st.title("PASEG Genie // for education purpose :coffee:")
-st.markdown("*Chat With The Planning and Schedule Excellence Guide ver. 5.0*", unsafe_allow_html=True)
+st.title("PMBOK Genie // for education purpose :coffee:")
+#st.markdown("*Chat With The Planning and Schedule Excellence Guide ver. 5.0*", unsafe_allow_html=True)
+st.markdown("*Chat With The BOK 7th*", unsafe_allow_html=True)
 st.markdown("---")
 
 # Define function to check login credentials
