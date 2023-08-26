@@ -25,7 +25,7 @@ pinecone.init(api_key=api_key, environment='asia-southeast1-gcp-free')
 #index_name = 'dbpaseg'
 
 ##TURN ON WHEN AVAILABLE
-#os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
+os.environ['OPENAI_API_KEY'] = st.secrets['openai_api_key']
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 #st.set_page_config(page_title="PASEG Genie", page_icon=":coffee:")
@@ -48,7 +48,7 @@ password = "65326"
 # Define Streamlit sidebar for login
 st.sidebar.title("Login")
 login_username = st.sidebar.text_input("Username")
-#login_password = st.sidebar.text_input("Password", type="password")
+login_password = st.sidebar.text_input("Password", type="password")
 
 #os.environ['OPENAI_API_KEY'] = st.sidebar.text_input("Enter your API Key")
 
