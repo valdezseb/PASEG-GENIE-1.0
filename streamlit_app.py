@@ -79,7 +79,11 @@ if check_login(login_username, login_password):
         embeddings = load_embedding()
 
         def load_pinecone(embeddings, index_name):
-            docsearch = Pinecone.from_existing_index(index_name, embeddings)
+            #docsearch = Pinecone.from_existing_index(index_name, embeddings)
+            # Get Pinecone collection
+            collection = pinecone.Collection(index_name)
+            doc_search = pinecone.Index.from_collection("genie-bok-i", collection)
+           
             return docsearch
 
         docsearch = load_pinecone(embeddings, index_name)
