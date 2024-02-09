@@ -1,5 +1,5 @@
 import streamlit as st
-from pinecone import Pinecone
+from pinecone import Pinecone, PodSpec
 from langchain import HuggingFaceEmbeddings, RetrievalQA, ChatOpenAI
 
 # Pinecone setup
