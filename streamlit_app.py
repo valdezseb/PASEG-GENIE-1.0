@@ -36,7 +36,7 @@ os.environ["TOKENIZERS_PARALLELISM"] = "false"
 #index_name = 'db-paseg'
 
 # Define Pinecone index name
-index_name = 'genie-bok'
+index_name = 'example-index'
 
 # Define Streamlit app
 #st.set_page_config(page_title="PASEG Genie ", page_icon=":coffee:", layout="wide")
@@ -79,10 +79,10 @@ if check_login(login_username, login_password):
         embeddings = load_embedding()
 
         def load_pinecone(embeddings, index_name):
-            #docsearch = Pinecone.from_existing_index(index_name, embeddings)
+            docsearch = Pinecone.from_existing_index(index_name, embeddings)
             # Get Pinecone collection
-            collection = pinecone.Collection(index_name)
-            doc_search = pinecone.Index.from_collection("genie-bok-i", collection)
+            #collection = pinecone.Collection(index_name)
+            #doc_search = pinecone.Index.from_collection("genie-bok-i", collection)
            
             return docsearch
 
