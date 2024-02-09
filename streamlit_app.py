@@ -5,7 +5,8 @@ import streamlit as st
 from PyPDF2 import PdfReader
 #from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.text_splitter import CharacterTextSplitter
+#from langchain.text_splitter import CharacterTextSplitter
+from langchain import CharacterTextSplitter
 from langchain.vectorstores import ElasticVectorSearch, Pinecone, Weaviate, FAISS
 import openai
 import os
@@ -91,7 +92,8 @@ if check_login(login_username, login_password):
         # Create the Chat and RetrievalQA objects
         chat = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0.80)
         qachain = load_qa_chain(chat, chain_type='stuff')
-        qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriever())
+        #qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriever())
+        qa = RetrievalQA(retriever=docsearch, chat_model=chat)
 
         condition1 = '\n [Generate Response/Text from my data.]  \n [organize information: organize text so its easy to read, and bullet points when needed.] \n [if applicable for the question response, add section: Things to Promote/Things to Avoid and Best Practices, give Examples] \n [tone and voice style: clear sentences, avoid use of complex sentences]'
 
