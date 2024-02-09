@@ -1,6 +1,9 @@
 import streamlit as st
 from pinecone import Pinecone, PodSpec
-from langchain import HuggingFaceEmbeddings, RetrievalQA, ChatOpenAI
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain.chains import RetrievalQA
+from langchain_openai import ChatOpenAI
+
 
 # Pinecone setup
 api_key = st.secrets["pinecone_api_key"]  
