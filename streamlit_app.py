@@ -3,7 +3,7 @@ from pinecone import Pinecone, PodSpec
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
 #from langchain_openai import ChatOpenAI
-from langchain_community.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
 # Pinecone setup
 api_key = st.secrets["pinecone_api_key"]  
