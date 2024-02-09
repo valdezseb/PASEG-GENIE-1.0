@@ -5,8 +5,8 @@ import streamlit as st
 from PyPDF2 import PdfReader
 #from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.embeddings import HuggingFaceEmbeddings
-#from langchain.text_splitter import CharacterTextSplitter
-from langchain import CharacterTextSplitter
+from langchain.text_splitter import CharacterTextSplitter
+#from langchain import CharacterTextSplitter
 from langchain.vectorstores import ElasticVectorSearch, Pinecone, Weaviate, FAISS
 import openai
 import os
