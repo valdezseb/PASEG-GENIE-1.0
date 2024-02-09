@@ -89,7 +89,7 @@ if check_login(login_username, login_password):
         docsearch = load_pinecone(embeddings, index_name)
 
         # Create the Chat and RetrievalQA objects
-        chat = ChatOpenAI(model_name='gpt-3.5-turbo-0613', temperature=0.80)
+        chat = ChatOpenAI(model_name='gpt-3.5-turbo', temperature=0.80)
         qachain = load_qa_chain(chat, chain_type='stuff')
         qa = RetrievalQA(combine_documents_chain=qachain, retriever=docsearch.as_retriever())
 
